@@ -5,14 +5,12 @@ namespace App\DataFixtures;
 use App\Entity\Coupon;
 use App\Entity\Product;
 use App\Entity\Tax;
+use App\Enum\CouponType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
-    public const string COUPON_TYPE_PERCENT = 'percent';
-    public const string COUPON_TYPE_FIXED = 'fixed';
-
     public function load(ObjectManager $manager): void
     {
         $productsData = [
@@ -43,9 +41,9 @@ class AppFixtures extends Fixture
         }
 
         $couponsData = [
-            ['code' => 'D15', 'type' => self::COUPON_TYPE_PERCENT, 'value' => '15.00'],
-            ['code' => 'P6', 'type' => self::COUPON_TYPE_PERCENT, 'value' => '6.00'],
-            ['code' => 'F10', 'type' => self::COUPON_TYPE_FIXED, 'value' => '10.00'],
+            ['code' => 'D15', 'type' => CouponType::Percent, 'value' => '15.00'],
+            ['code' => 'P6', 'type' => CouponType::Percent, 'value' => '6.00'],
+            ['code' => 'F10', 'type' => CouponType::Fixed, 'value' => '10.00'],
         ];
 
         foreach ($couponsData as $couponInfo) {
