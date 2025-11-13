@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\CouponType;
 use App\Repository\CouponRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,8 +20,8 @@ class Coupon
     #[ORM\Column(length: 255)]
     private ?string $code = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $type = null;
+    #[ORM\Column(length: 255, enumType: CouponType::class)]
+    private ?CouponType $type = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 0)]
     private ?string $value = null;
@@ -42,12 +43,12 @@ class Coupon
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?CouponType
     {
         return $this->type;
     }
 
-    public function setType(string $type): static
+    public function setType(CouponType $type): static
     {
         $this->type = $type;
 

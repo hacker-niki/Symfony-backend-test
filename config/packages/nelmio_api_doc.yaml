@@ -1,0 +1,9 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: backend test
+            description:
+            version: 0.0.1
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/
