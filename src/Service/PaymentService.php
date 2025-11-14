@@ -32,6 +32,8 @@ final class PaymentService implements PaymentServiceInterface
                 'stripe' => $this->stripeProcessor->processPayment($this->convertToCents($amount)),
                 default => throw new InvalidArgumentException('Unsupported payment processor specified.'),
             };
+        } catch (InvalidArgumentException $e) {
+            throw $e;
         } catch (Exception $e) {
             throw new Exception('Payment failed: ' . $e->getMessage());
         }
