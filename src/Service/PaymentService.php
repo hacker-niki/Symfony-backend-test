@@ -6,12 +6,13 @@ namespace App\Service;
 use App\Repository\CouponRepository;
 use App\Repository\ProductRepository;
 use App\Repository\TaxRepository;
+use App\Service\Interface\PaymentServiceInterface;
 use Exception;
 use InvalidArgumentException;
 use Systemeio\TestForCandidates\PaymentProcessor\PaypalPaymentProcessor;
 use Systemeio\TestForCandidates\PaymentProcessor\StripePaymentProcessor;
 
-class PaymentService
+final class PaymentService implements PaymentServiceInterface
 {
     public function __construct(
         private readonly PaypalPaymentProcessor $paypalProcessor,

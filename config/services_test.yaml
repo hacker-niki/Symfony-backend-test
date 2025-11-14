@@ -1,0 +1,8 @@
+services:
+    App\Service\Interface\PriceCalculatorServiceInterface:
+        alias: App\Service\PriceCalculatorService
+        public: true
+
+    App\Service\Interface\PaymentServiceInterface:
+        alias: App\Service\PaymentService
+        public: true

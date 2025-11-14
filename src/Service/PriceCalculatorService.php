@@ -4,17 +4,18 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Enum\CouponType;
-use App\Repository\CouponRepository;
-use App\Repository\ProductRepository;
-use App\Repository\TaxRepository;
+use App\Repository\Interface\CouponRepositoryInterface;
+use App\Repository\Interface\ProductRepositoryInterface;
+use App\Repository\Interface\TaxRepositoryInterface;
+use App\Service\Interface\PriceCalculatorServiceInterface;
 use InvalidArgumentException;
 
-class PriceCalculatorService
+final class PriceCalculatorService implements PriceCalculatorServiceInterface
 {
     public function __construct(
-        private readonly ProductRepository $productRepository,
-        private readonly CouponRepository  $couponRepository,
-        private readonly TaxRepository     $taxRepository
+        private readonly ProductRepositoryInterface $productRepository,
+        private readonly CouponRepositoryInterface  $couponRepository,
+        private readonly TaxRepositoryInterface     $taxRepository
     )
     {
     }

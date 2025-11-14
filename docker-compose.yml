@@ -9,8 +9,6 @@ services:
             - "8337:8337"
         volumes:
             - .:/app:rw
-        environment:
-            - APP_ENV=dev
 
     database:
       image: postgres:${POSTGRES_VERSION:-16}-alpine

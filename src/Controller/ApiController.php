@@ -4,21 +4,21 @@ namespace App\Controller;
 
 use App\Dto\CalculatePriceRequest;
 use App\Dto\PurchaseRequest;
-use App\Service\PaymentService;
-use App\Service\PriceCalculatorService;
+use App\Service\Interface\PaymentServiceInterface;
+use App\Service\Interface\PriceCalculatorServiceInterface;
 use Nelmio\ApiDocBundle\Attribute\Model;
+use OpenApi\Attributes as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Routing\Attribute\Route;
 use Throwable;
-use OpenApi\Attributes as OA;
 
 final class ApiController extends AbstractController
 {
     public function __construct(
-        private readonly PriceCalculatorService $priceCalculator,
-        private readonly PaymentService $paymentService
+        private readonly PriceCalculatorServiceInterface $priceCalculator,
+        private readonly PaymentServiceInterface $paymentService
     ) {
     }
 
